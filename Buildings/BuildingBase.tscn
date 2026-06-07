@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://l0x4u48tae58"]
+
+[ext_resource type="Texture2D" uid="uid://didwfjsk85kmw" path="res://Buildings/Building.png" id="1_gvibl"]
+[ext_resource type="Script" uid="uid://iets5628csrw" path="res://Buildings/building_base.gd" id="1_rsjsx"]
+
+[node name="BuildingBase" type="Node2D"]
+script = ExtResource("1_rsjsx")
+orb_bob_amplitude = 2.0
+orb_bob_speed = 1.0
+
+[node name="Foundation" type="Sprite2D" parent="."]
+texture = ExtResource("1_gvibl")
+hframes = 5
+frame = 1
+
+[node name="Orb" type="Sprite2D" parent="."]
+position = Vector2(0, -10.4203)
+texture = ExtResource("1_gvibl")
+hframes = 5
+frame = 2
+
+[node name="OrbBobCenter" type="Node2D" parent="."]
+position = Vector2(0, -12)

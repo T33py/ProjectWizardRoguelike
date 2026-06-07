@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dggwj41dlv764" path="res://PlayerCharacter/controller.gd" id="2_tou76"]
 
 [node name="Wizard" type="Node2D"]
+z_index = 5
 script = ExtResource("1_h2cfe")
 
 [node name="Controller" type="Node" parent="." node_paths=PackedStringArray("wizard")]

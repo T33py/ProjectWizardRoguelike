@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://2qwdkhut17nb"]
+
+[ext_resource type="Script" uid="uid://dkus7kmti1gj5" path="res://Buildings/Pylon/pylon.gd" id="1_r1ucu"]
+[ext_resource type="PackedScene" uid="uid://l0x4u48tae58" path="res://Buildings/BuildingBase.tscn" id="1_w3dc1"]
+
+[node name="Pylon" type="Node2D"]
+z_index = 1
+script = ExtResource("1_r1ucu")
+
+[node name="BuildingBase" parent="." instance=ExtResource("1_w3dc1")]
+build_indicator_modulation = Color(1, 1, 1, 0.541176)
+
+[node name="Foundation" parent="BuildingBase" index="0"]
+self_modulate = Color(0.564962, 0.564962, 0.564962, 1)
+frame = 4
+
+[node name="Orb" parent="BuildingBase" index="1"]
+position = Vector2(0, -14.7943)
+
+[node name="OrbBobCenter" parent="BuildingBase" index="2"]
+position = Vector2(0, -15)
+
+[editable path="BuildingBase"]

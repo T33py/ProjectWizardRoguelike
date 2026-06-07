@@ -1,4 +1,8 @@
 extends Control
+class_name GameRunner
+
+@export var state: State
+
 
 @onready var hex_map: HexMap = $HexMap
 @onready var pointer_handler: PointerHandler = $PointerHandler

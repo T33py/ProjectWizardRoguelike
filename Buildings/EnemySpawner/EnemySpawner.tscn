@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://nqnhoxm702o5"]
+
+[ext_resource type="PackedScene" uid="uid://l0x4u48tae58" path="res://Buildings/BuildingBase.tscn" id="1_5s5e4"]
+[ext_resource type="Script" uid="uid://db0mrb1mlivii" path="res://Buildings/EnemySpawner/enemy_spawner.gd" id="1_sv48m"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_sv48m")
+
+[node name="BuildingBase" parent="." instance=ExtResource("1_5s5e4")]
+
+[node name="Foundation" parent="BuildingBase" index="0"]
+self_modulate = Color(0.835294, 0.0980392, 0.145098, 1)
+
+[node name="Orb" parent="BuildingBase" index="1"]
+modulate = Color(1, 0.0941176, 0.0901961, 1)
+position = Vector2(0, -12.196)
+
+[editable path="BuildingBase"]

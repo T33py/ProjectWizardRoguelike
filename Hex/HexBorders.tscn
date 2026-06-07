@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf824g84jh0yt"]
+
+[ext_resource type="Texture2D" uid="uid://b4dh2smrnpcyf" path="res://Hex/HexBorders.png" id="1_qwpgd"]
+
+[node name="HexBorders" type="Sprite2D"]
+z_index = 2
+texture = ExtResource("1_qwpgd")
+hframes = 14
