@@ -103,7 +103,6 @@ func add_hex_to_grid(hex: Hex):
 	pass
 
 func redo_grid():
-	#print('REDO GRID')
 	var length = len(grid) + 16
 	var height = len(grid[0]) + 16
 	var new_grid: Array[Array] = []
