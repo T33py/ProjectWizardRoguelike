@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://7ak05867ub6e"]
+
+[ext_resource type="Texture2D" uid="uid://vrasfpsl8nif" path="res://PlayerCharacter/Character.png" id="1_a6ad1"]
+[ext_resource type="Script" uid="uid://e4gw6hwcqi8m" path="res://PlayerCharacter/wizard.gd" id="1_h2cfe"]
+[ext_resource type="Script" uid="uid://dnfmn2ed648ha" path="res://PlayerCharacter/wizard_visual.gd" id="2_j4oe6"]
+
+[node name="Wizard" type="Node2D"]
+script = ExtResource("1_h2cfe")
+
+[node name="Visual" type="Node2D" parent="."]
+script = ExtResource("2_j4oe6")
+
+[node name="Character" type="Sprite2D" parent="Visual"]
+rotation = 1.5708
+texture = ExtResource("1_a6ad1")
+hframes = 2
+frame = 1

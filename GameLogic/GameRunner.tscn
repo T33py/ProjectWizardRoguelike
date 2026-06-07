@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4l0pd6lq6rm0"]
+
+[ext_resource type="Script" uid="uid://bj7n2vmdbvu01" path="res://GameLogic/game_runner.gd" id="1_ffb34"]
+[ext_resource type="PackedScene" uid="uid://c7a0kogtedfpd" path="res://Map/HexMap.tscn" id="1_ghm7u"]
+[ext_resource type="Script" uid="uid://c2o5fu5x0g" path="res://GameLogic/pointer_handler.gd" id="2_s4q0q"]
+[ext_resource type="PackedScene" uid="uid://7ak05867ub6e" path="res://PlayerCharacter/Wizard.tscn" id="4_rpqki"]
+
+[node name="GameRunner" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ffb34")
+
+[node name="HexMap" parent="." instance=ExtResource("1_ghm7u")]
+position = Vector2(-248, 147)
+grid_size = Vector2i(6, 10)
+
+[node name="PointerHandler" type="Node" parent="."]
+script = ExtResource("2_s4q0q")
+
+[node name="Wizard" parent="." instance=ExtResource("4_rpqki")]
+position = Vector2(306, 159)

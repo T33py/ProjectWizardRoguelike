@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7a0kogtedfpd"]
+
+[ext_resource type="Script" uid="uid://bom04j7054p8v" path="res://Map/hex_map.gd" id="1_1uauy"]
+[ext_resource type="PackedScene" uid="uid://b1j3ivqmb5jel" path="res://Hex/Hex.tscn" id="2_vmd7c"]
+
+[node name="HexMap" type="Node2D"]
+script = ExtResource("1_1uauy")
+hex_template = ExtResource("2_vmd7c")
+dx = 46.0
+dy = -30.0
+grid_origin = Vector2(320, 160)
+grid_size = Vector2i(4, 7)
+starting_hexes = 2500
