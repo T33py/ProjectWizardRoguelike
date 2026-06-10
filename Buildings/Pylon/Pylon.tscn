@@ -15,7 +15,7 @@ self_modulate = Color(0.564962, 0.564962, 0.564962, 1)
 frame = 4
 
 [node name="Orb" parent="BuildingBase" index="1"]
-position = Vector2(0, -14.7943)
+position = Vector2(0, -14.3195)
 
 [node name="OrbBobCenter" parent="BuildingBase" index="2"]
 position = Vector2(0, -15)

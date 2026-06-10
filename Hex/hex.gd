@@ -5,8 +5,13 @@ class_name Hex
 signal mouse_entered(me: Hex)
 signal mouse_exited(me: Hex)
 
+enum Biome { PLACEHOLDER, GRASS, WATER, DESERT }
+
 @export var enemy_spawner_prefab: PackedScene
 @export var pylon_prefab: PackedScene
+
+## The index at which each biomes tiles starts
+@export var biome_indexes: Array[int] = [0, 2, 6, 7]
 
 var hex_map: HexMap
 
@@ -16,16 +21,30 @@ var coordinates: Vector2i :
 	set(val):
 		_coordinates = val
 var neighbouring_coordinates: Array[Vector2i] = []
+var reachable_neighbours: int = 0
+var walkable: bool = true
+var land_reachable: bool = true
+
+var _biome: Biome = Biome.PLACEHOLDER
+var biome: Biome:
+	get: return _biome
+	set(val):
+		_biome = val
+		if visual != null:
+			_choose_a_sprite()
+var sprite_idx: int = 0
 
 var allows_building: bool = true
 var building:Node2D
 
+@onready var visual: Sprite2D = $Sprite2D
 @onready var hitbox: Area2D = $Hitbox
 @onready var border_shower: HexBorderShower = $HexBorderShower
 
 func _ready() -> void:
 	hitbox.mouse_entered.connect(_mouse_entered)
 	hitbox.mouse_exited.connect(_mouse_exited)
+	_choose_a_sprite()
 	return
 
 func get_neighbours() -> Array[Hex]:
@@ -56,4 +75,15 @@ func _mouse_entered() -> void:
 
 func _mouse_exited() -> void:
 	mouse_exited.emit(self)
+	return
+
+func _choose_a_sprite() -> void:
+	var ssrange: int = 0
+	print(len(biome_indexes), ' ', biome)
+	if len(biome_indexes) >= biome+1:
+		ssrange = biome_indexes[biome+1]-1 - biome_indexes[biome]
+	else:
+		ssrange = visual.hframes-1 - biome_indexes[biome]
+	sprite_idx = randi_range(biome_indexes[biome], biome_indexes[biome]+ssrange)
+	visual.frame = sprite_idx
 	return

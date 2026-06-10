@@ -23,7 +23,13 @@ var _grid_size: Vector2i = Vector2i(0, 0)
 	get: return _grid_size
 	set(val): 
 		_grid_size = val
-		#setup_grid()
+
+var _screensized_grid_size: Vector2i = Vector2i.ZERO
+@export var screensized_grid_size: Vector2i:
+	get: return _screensized_grid_size
+	set(val):
+		_screensized_grid_size = val
+		make_screensized_grid()
 
 var _starting_hexes: int = 100
 @export var starting_hexes: int:
@@ -45,14 +51,15 @@ var grid_x_max: int = 0
 var grid_y_min: int = 0
 var grid_y_max: int = 0
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	redo_grid()
 	for c in get_children():
 		if c is Hex:
 			all_hexes.append(c)
 			new_hex_created.emit(c)
-	pass # Replace with function body.
+	
+	pass
 
 func setup_grid():
 	for x in range(grid_size.x):
@@ -72,6 +79,7 @@ func setup_hex(x: int, y: int) -> Hex:
 		all_hexes.append(hex)
 		add_child(hex)
 	hex.position = grid_origin + Vector2(2 * (x * dx) + (dx * (abs(y)%2)), y * dy)
+	hex.biome = hex.Biome.GRASS
 	#print('all hexes: ' + str(all_hexes))
 	add_hex_to_grid(hex)
 	new_hex_created.emit(hex)
@@ -136,6 +144,8 @@ func get_hex(x: int, y: int) -> Hex:
 		y += grid_y_offset
 		if y < len(grid[x]) and y >= 0:
 			if is_instance_valid(grid[x][y]):
+				if grid[x][y].is_queued_for_deletion():
+					return null
 				return grid[x][y]
 	return null
 
@@ -148,14 +158,15 @@ func get_hexes(coordinates: Array[Vector2i]) -> Array[Hex]:
 	return hexes
 
 func spiral_grid_out() -> void:
-	if len(all_hexes) > starting_hexes:
-		for hex in all_hexes:
-			hex.queue_free()
-		all_hexes = []
+	if starting_hexes == 0:
+		return
 	if len(all_hexes) == 0:
 		setup_hex(0, 0)
 	
 	var chi: int = 0
+	
+	if len(all_hexes) == 0:
+		var new_00 = setup_hex(0, 0)
 	var current_hex: Hex = all_hexes[chi]
 	
 	while len(all_hexes) < starting_hexes:
@@ -164,6 +175,15 @@ func spiral_grid_out() -> void:
 				setup_hex(coord.x, coord.y)
 		chi += 1
 		current_hex = all_hexes[chi]
+	return
+
+func make_screensized_grid() -> void:
+	for hex in all_hexes:
+		hex.queue_free()
+	all_hexes.resize(0)
+	for x in range(screensized_grid_size.x):
+		for y in range(screensized_grid_size.y):
+			setup_hex(x, y)
 	return
 
 func print_grid():

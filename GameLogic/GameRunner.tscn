@@ -21,6 +21,8 @@ state = NodePath("State")
 [node name="HexMap" parent="." instance=ExtResource("1_ghm7u")]
 position = Vector2(-248, 147)
 grid_size = Vector2i(6, 10)
+screensized_grid_size = null
+starting_hexes = 100
 
 [node name="State" type="Node" parent="." node_paths=PackedStringArray("game_runner", "hex_map")]
 script = ExtResource("3_bjgj6")
