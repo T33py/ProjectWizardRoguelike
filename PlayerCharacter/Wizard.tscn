@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://7ak05867ub6e"]
+[gd_scene load_steps=6 format=3 uid="uid://7ak05867ub6e"]
 
 [ext_resource type="Texture2D" uid="uid://vrasfpsl8nif" path="res://PlayerCharacter/Character.png" id="1_a6ad1"]
 [ext_resource type="Script" uid="uid://e4gw6hwcqi8m" path="res://PlayerCharacter/wizard.gd" id="1_h2cfe"]
 [ext_resource type="Script" uid="uid://dnfmn2ed648ha" path="res://PlayerCharacter/wizard_visual.gd" id="2_j4oe6"]
 [ext_resource type="Script" uid="uid://dggwj41dlv764" path="res://PlayerCharacter/controller.gd" id="2_tou76"]
+[ext_resource type="Script" uid="uid://cllhqn1j8ot63" path="res://PlayerCharacter/wizard_stats.gd" id="3_tou76"]
 
 [node name="Wizard" type="Node2D"]
 z_index = 5
@@ -13,6 +14,9 @@ script = ExtResource("1_h2cfe")
 script = ExtResource("2_tou76")
 wizard = NodePath("..")
 accelleration = 1.0
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("3_tou76")
 
 [node name="Visual" type="Node2D" parent="."]
 script = ExtResource("2_j4oe6")

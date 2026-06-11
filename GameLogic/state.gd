@@ -9,6 +9,7 @@ signal player_changed_activity(to: PlayerActivities)
 
 @export var game_runner: GameRunner
 @export var hex_map: HexMap
+@export var wizard: Wizard
 
 var _current_wizard_activity: WizardActivities = WizardActivities.CASTING
 var current_wizard_activity: WizardActivities:

@@ -15,7 +15,7 @@ pylon_prefab = ExtResource("3_vjx46")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_whgm8")
 hframes = 10
-frame = 2
+frame = 1
 
 [node name="Hitbox" type="Area2D" parent="."]
 

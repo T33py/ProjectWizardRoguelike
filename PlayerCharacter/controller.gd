@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 func move(delta: float) -> void:
 	if not can_move:
 		return
-	wizard.global_position += _move_direction * wizard.current_movespeed * delta
+	wizard.global_position += _move_direction * wizard.stats.current_movespeed * delta
 	return
 
 func goto_place_buildings_mode() -> void:
