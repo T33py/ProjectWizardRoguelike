@@ -5,6 +5,7 @@ class_name Wizard
 
 @onready var controller: WizardController = $Controller
 @onready var stats: WizardStats = $Stats
+@onready var hitbox: Area2D = $Hitbox
 
 func _ready() -> void:
 	controller.state = state

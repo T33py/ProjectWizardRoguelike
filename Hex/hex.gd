@@ -4,6 +4,8 @@ class_name Hex
 
 signal mouse_entered(me: Hex)
 signal mouse_exited(me: Hex)
+signal wizard_entered(me: Hex)
+signal wizard_exited(me: Hex)
 
 enum Biome { PLACEHOLDER, GRASS, WATER, DESERT }
 
@@ -44,6 +46,8 @@ var building:Node2D
 func _ready() -> void:
 	hitbox.mouse_entered.connect(_mouse_entered)
 	hitbox.mouse_exited.connect(_mouse_exited)
+	hitbox.area_entered.connect(_area_entered)
+	hitbox.area_exited.connect(_area_exited)
 	_choose_a_sprite()
 	return
 
@@ -77,9 +81,18 @@ func _mouse_exited() -> void:
 	mouse_exited.emit(self)
 	return
 
+func _area_entered(other: Area2D) -> void:
+	if other.get_parent() is Wizard:
+		wizard_entered.emit(self)
+	return
+
+func _area_exited(other: Area2D) -> void:
+	if other.get_parent() is Wizard:
+		wizard_exited.emit(self)
+	return
+
 func _choose_a_sprite() -> void:
 	var ssrange: int = 0
-	print(len(biome_indexes), ' ', biome)
 	if len(biome_indexes) >= biome+1:
 		ssrange = biome_indexes[biome+1]-1 - biome_indexes[biome]
 	else:
@@ -87,3 +100,6 @@ func _choose_a_sprite() -> void:
 	sprite_idx = randi_range(biome_indexes[biome], biome_indexes[biome]+ssrange)
 	visual.frame = sprite_idx
 	return
+
+func _to_string() -> String:
+	return 'Hex' + str(coordinates)

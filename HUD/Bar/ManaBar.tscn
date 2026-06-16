@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjbuc2b82y03b"]
+
+[ext_resource type="Texture2D" uid="uid://n1qns5w6vx8d" path="res://HUD/Bar/BarBorder.png" id="1_4d18x"]
+[ext_resource type="Script" uid="uid://7irlub871qv7" path="res://HUD/Bar/mana_bar.gd" id="1_sgldg"]
+[ext_resource type="Texture2D" uid="uid://b5exphslaqu4g" path="res://HUD/Bar/BarFill.png" id="2_sgldg"]
+
+[node name="ManaBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -600.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sgldg")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+modulate = Color(0.0705882, 0.14902, 1, 1)
+offset_right = 40.0
+offset_bottom = 40.0
+step = 0.0
+value = 49.0
+fill_mode = 3
+texture_over = ExtResource("1_4d18x")
+texture_progress = ExtResource("2_sgldg")

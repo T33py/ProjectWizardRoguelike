@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsp4gw3b6nsju"]
+
+[ext_resource type="Texture2D" uid="uid://n1qns5w6vx8d" path="res://HUD/Bar/BarBorder.png" id="1_08mov"]
+[ext_resource type="Texture2D" uid="uid://b5exphslaqu4g" path="res://HUD/Bar/BarFill.png" id="2_ksgkv"]
+
+[node name="GenericBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -600.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 49.0
+fill_mode = 3
+texture_over = ExtResource("1_08mov")
+texture_progress = ExtResource("2_ksgkv")

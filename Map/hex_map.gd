@@ -4,6 +4,8 @@ class_name HexMap
 
 signal new_hex_created(hex: Hex)
 
+@export var state: State
+
 @export var hex_template: PackedScene
 var _dx: float = 0
 @export var dx: float:
@@ -51,14 +53,17 @@ var grid_x_max: int = 0
 var grid_y_min: int = 0
 var grid_y_max: int = 0
 
+@onready var wizard_tracker: MapWizardTracker = $WizardTracker
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	wizard_tracker.wizard = state.wizard
+	new_hex_created.connect(wizard_tracker.on_hex_created)
 	redo_grid()
 	for c in get_children():
 		if c is Hex:
 			all_hexes.append(c)
 			new_hex_created.emit(c)
-	
 	pass
 
 func setup_grid():
@@ -166,7 +171,7 @@ func spiral_grid_out() -> void:
 	var chi: int = 0
 	
 	if len(all_hexes) == 0:
-		var new_00 = setup_hex(0, 0)
+		setup_hex(0, 0)
 	var current_hex: Hex = all_hexes[chi]
 	
 	while len(all_hexes) < starting_hexes:

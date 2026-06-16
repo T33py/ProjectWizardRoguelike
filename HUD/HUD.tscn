@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://k28vs3b8im1k"]
+
+[ext_resource type="PackedScene" uid="uid://beu324osbb0a" path="res://HUD/Bar/HealthBar.tscn" id="1_b7ubu"]
+[ext_resource type="Script" uid="uid://dp76y8g8rkdm1" path="res://HUD/hud.gd" id="1_ja1d4"]
+[ext_resource type="PackedScene" uid="uid://bjbuc2b82y03b" path="res://HUD/Bar/ManaBar.tscn" id="2_ja1d4"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ja1d4")
+
+[node name="HealthBar" parent="." instance=ExtResource("1_b7ubu")]
+layout_mode = 1
+offset_left = 4.0
+offset_top = 246.0
+offset_right = -596.0
+offset_bottom = -4.0
+
+[node name="ManaBar" parent="." instance=ExtResource("2_ja1d4")]
+layout_mode = 1
+offset_left = 39.0
+offset_top = 246.0
+offset_right = -561.0
+offset_bottom = -4.0

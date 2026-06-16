@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4l0pd6lq6rm0"]
+[gd_scene load_steps=8 format=3 uid="uid://d4l0pd6lq6rm0"]
 
 [ext_resource type="Script" uid="uid://bj7n2vmdbvu01" path="res://GameLogic/game_runner.gd" id="1_ffb34"]
 [ext_resource type="PackedScene" uid="uid://c7a0kogtedfpd" path="res://Map/HexMap.tscn" id="1_ghm7u"]
+[ext_resource type="PackedScene" uid="uid://k28vs3b8im1k" path="res://HUD/HUD.tscn" id="2_cigi3"]
 [ext_resource type="Script" uid="uid://c2o5fu5x0g" path="res://GameLogic/pointer_handler.gd" id="2_s4q0q"]
 [ext_resource type="Script" uid="uid://c2eyhlpu3aeju" path="res://GameLogic/state.gd" id="3_bjgj6"]
 [ext_resource type="PackedScene" uid="uid://7ak05867ub6e" path="res://PlayerCharacter/Wizard.tscn" id="4_rpqki"]
@@ -18,8 +19,9 @@ mouse_filter = 2
 script = ExtResource("1_ffb34")
 state = NodePath("State")
 
-[node name="HexMap" parent="." instance=ExtResource("1_ghm7u")]
-position = Vector2(-248, 147)
+[node name="HexMap" parent="." node_paths=PackedStringArray("state") instance=ExtResource("1_ghm7u")]
+position = Vector2(0, -10)
+state = NodePath("../State")
 grid_size = Vector2i(6, 10)
 
 [node name="State" type="Node" parent="." node_paths=PackedStringArray("game_runner", "hex_map", "wizard")]
@@ -39,3 +41,11 @@ state = NodePath("../State")
 [node name="WizardCam" type="Camera2D" parent="." node_paths=PackedStringArray("wizard")]
 script = ExtResource("5_ht3k0")
 wizard = NodePath("../Wizard")
+
+[node name="Hud" parent="WizardCam" node_paths=PackedStringArray("state", "wizard") instance=ExtResource("2_cigi3")]
+offset_left = -25.0
+offset_top = -54.0
+offset_right = -25.0
+offset_bottom = -54.0
+state = NodePath("../../State")
+wizard = NodePath("../../Wizard")

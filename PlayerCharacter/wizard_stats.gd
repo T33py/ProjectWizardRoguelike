@@ -1,7 +1,9 @@
 extends Node
 class_name WizardStats
 
+signal health_changed()
 signal reached_0_health()
+signal mana_changed()
 
 @export var max_health: float = 10
 @export var health_regen: float = 0
@@ -14,16 +16,18 @@ var current_health: float:
 			_current_health = max_health
 		if _current_health <= 0:
 			reached_0_health.emit()
+		health_changed.emit()
 
 @export var max_mana: float = 10
 @export var mana_regen: float = 0.25
-var _current_mana: float = 10
+var _current_mana: float = 0
 var current_mana: float:
 	get: return _current_mana
 	set(val):
 		_current_mana = val
 		if _current_mana > max_mana:
 			_current_mana = max_mana
+		mana_changed.emit()
 
 @export var max_movespeed: float = 100
 @export var min_movespeed: float = 25
@@ -41,6 +45,6 @@ var current_movespeed: float:
 var current_shield: float = 0
 
 func _process(delta: float) -> void:
-	current_health += health_regen
-	current_mana += mana_regen
+	current_health += health_regen * delta
+	current_mana += mana_regen * delta
 	return
