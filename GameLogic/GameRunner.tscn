@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4l0pd6lq6rm0"]
+[gd_scene load_steps=9 format=3 uid="uid://d4l0pd6lq6rm0"]
 
 [ext_resource type="Script" uid="uid://bj7n2vmdbvu01" path="res://GameLogic/game_runner.gd" id="1_ffb34"]
 [ext_resource type="PackedScene" uid="uid://c7a0kogtedfpd" path="res://Map/HexMap.tscn" id="1_ghm7u"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c2eyhlpu3aeju" path="res://GameLogic/state.gd" id="3_bjgj6"]
 [ext_resource type="PackedScene" uid="uid://7ak05867ub6e" path="res://PlayerCharacter/Wizard.tscn" id="4_rpqki"]
 [ext_resource type="Script" uid="uid://cprtqu57w4spm" path="res://GameLogic/wizard_cam.gd" id="5_ht3k0"]
+[ext_resource type="Script" uid="uid://ce0n2wibo78at" path="res://GameLogic/game_sounds.gd" id="8_dj657"]
 
 [node name="GameRunner" type="Control" node_paths=PackedStringArray("state")]
 layout_mode = 3
@@ -24,11 +25,12 @@ position = Vector2(0, -10)
 state = NodePath("../State")
 grid_size = Vector2i(6, 10)
 
-[node name="State" type="Node" parent="." node_paths=PackedStringArray("game_runner", "hex_map", "wizard")]
+[node name="State" type="Node" parent="." node_paths=PackedStringArray("game_runner", "hex_map", "wizard", "game_sounds")]
 script = ExtResource("3_bjgj6")
 game_runner = NodePath("..")
 hex_map = NodePath("../HexMap")
 wizard = NodePath("../Wizard")
+game_sounds = NodePath("../GameSounds")
 
 [node name="PointerHandler" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("2_s4q0q")
@@ -49,3 +51,6 @@ offset_right = -25.0
 offset_bottom = -54.0
 state = NodePath("../../State")
 wizard = NodePath("../../Wizard")
+
+[node name="GameSounds" type="Node" parent="."]
+script = ExtResource("8_dj657")

@@ -57,7 +57,8 @@ var grid_y_max: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	wizard_tracker.wizard = state.wizard
+	if state.wizard != null:
+		wizard_tracker.wizard = state.wizard
 	new_hex_created.connect(wizard_tracker.on_hex_created)
 	redo_grid()
 	for c in get_children():

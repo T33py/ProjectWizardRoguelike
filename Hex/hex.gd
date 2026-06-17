@@ -54,7 +54,12 @@ func _ready() -> void:
 func get_neighbours() -> Array[Hex]:
 	return hex_map.get_hexes(neighbouring_coordinates)
 
-func show_pylon_build_placement_indication():
+func build_pylon() -> void:
+	if building is Pylon:
+		building.place()
+	return
+
+func show_pylon_build_placement_indication() -> void:
 	if building != null:
 		return
 	var pylon: Pylon = pylon_prefab.instantiate()
@@ -68,7 +73,8 @@ func show_pylon_build_placement_indication():
 func hide_pylon_build_placement_indication():
 	if building != null:
 		if building is Pylon:
-			building.get_rid_of_this()
+			if building.being_placed:
+				building.get_rid_of_this()
 		building = null
 		border_shower.clean()
 	return
