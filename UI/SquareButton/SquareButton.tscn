@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dv830co0isq5j"]
+
+[ext_resource type="Texture2D" uid="uid://ew51nwbh55pr" path="res://UI/SquareButton/Normal.png" id="1_a1kve"]
+[ext_resource type="Texture2D" uid="uid://dmgrrw4lluxr7" path="res://UI/SquareButton/Click.png" id="2_qi3ec"]
+[ext_resource type="Texture2D" uid="uid://de4p2pbnbpqy2" path="res://UI/SquareButton/Hover.png" id="3_anvkf"]
+[ext_resource type="Texture2D" uid="uid://dvrq2l7n2b0kh" path="res://UI/SquareButton/Disabled.png" id="4_blskp"]
+[ext_resource type="Script" uid="uid://cnye1x0kf6qop" path="res://UI/SquareButton/square_button.gd" id="5_qi3ec"]
+[ext_resource type="AudioStream" uid="uid://bp31iqu46fqak" path="res://UI/SquareButton/soft-button.no-licence.wav" id="6_anvkf"]
+
+[node name="SquareButton" type="TextureButton"]
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("1_a1kve")
+texture_pressed = ExtResource("2_qi3ec")
+texture_hover = ExtResource("3_anvkf")
+texture_disabled = ExtResource("4_blskp")
+script = ExtResource("5_qi3ec")
+text = "Template Text"
+style = "[b][color=black]"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 240.0
+offset_bottom = 112.0
+mouse_filter = 2
+bbcode_enabled = true
+text = "[b][color=black]Template Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_anvkf")
