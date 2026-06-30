@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://tuo53tcgp33h"]
+
+[ext_resource type="Script" uid="uid://dofqi68wjt07g" path="res://Skills/skill.gd" id="1_v4s1j"]
+
+[node name="Projectile" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -600.0
+offset_bottom = -320.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v4s1j")
+cooldown = 1.0

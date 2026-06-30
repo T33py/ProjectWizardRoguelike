@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://e424qm4yscms"]
+
+[ext_resource type="Shader" uid="uid://beyf4r8ngf8du" path="res://UI/SkillSquare/ClockSwipe.gdshader" id="1_ec0df"]
+[ext_resource type="Texture2D" uid="uid://btt2oi4x7cred" path="res://UI/SkillSquare/Button.png" id="1_qci2v"]
+[ext_resource type="Script" uid="uid://blh18u3g1na6d" path="res://UI/SkillSquare/skill_square.gd" id="1_te78c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_te78c"]
+shader = ExtResource("1_ec0df")
+shader_parameter/progress = 0.0
+shader_parameter/angle_offset = 0.0
+shader_parameter/feather = 0.0
+shader_parameter/reversed = false
+shader_parameter/darken_amount = 0.52
+shader_parameter/dark_color = Color(0, 0, 0, 1)
+shader_parameter/show_edge_line = true
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/edge_width = 0.01
+
+[node name="SkillSquare" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -600.0
+offset_bottom = -320.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_te78c")
+
+[node name="Visual" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_te78c")
+position = Vector2(20, 20)
+texture = ExtResource("1_qci2v")
